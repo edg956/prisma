@@ -69,7 +69,7 @@ export function buildTypedQueryCjs({ query, runtimeBase, runtimeName }: BuildTyp
 
 export function buildTypedQueryEsm({ query, runtimeBase, runtimeName }: BuildTypedQueryOptions) {
   const writer = new Writer(0, undefined)
-  writer.writeLine(`import { makeTypedQueryFactory as $mkFactory } from "${runtimeBase}/${runtimeName}"`)
+  writer.writeLine(`import { makeTypedQueryFactory as $mkFactory } from "${runtimeBase}/${runtimeName}.js"`)
   // https://github.com/javascript-compiler-hints/compiler-notations-spec/blob/main/pure-notation-spec.md
   writer.writeLine(`export const ${query.name} = /*#__PURE__*/ $mkFactory(${JSON.stringify(query.source)})`)
   return writer.toString()
